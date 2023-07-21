@@ -1,0 +1,6 @@
+apiVersion: minio.min.io.min.io/v2
+kind: Tenant
+metadata:
+  name: tenant-sample
+spec:
+  # TODO(user): Add fields here
