@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package controllers
+package miniominio
 
 import (
 	"context"
@@ -24,7 +24,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	miniominiov2 "github.com/minio/operator/api/v2"
+	miniominiov2 "github.com/minio/operator/apis/minio.min.io/v2"
 )
 
 // TenantReconciler reconciles a Tenant object

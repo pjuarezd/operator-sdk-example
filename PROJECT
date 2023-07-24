@@ -1,6 +1,7 @@
 domain: min.io
 layout:
 - go.kubebuilder.io/v3
+multigroup: true
 plugins:
   manifests.sdk.operatorframework.io/v2: {}
   scorecard.sdk.operatorframework.io/v2: {}
@@ -8,21 +9,21 @@ projectName: minio-operator
 repo: github.com/minio/operator
 resources:
 - api:
-    crdVersion: v1
+    crdVersion: v2
     namespaced: true
   controller: true
   domain: min.io
   group: minio.min.io
   kind: Tenant
-  path: github.com/minio/operator/api/v2
+  path: github.com/minio/operator/apis/minio.min.io/v2
   version: v2
 - api:
-    crdVersion: v1
+    crdVersion: v1alpha1
     namespaced: true
   controller: true
   domain: min.io
-  group: minio.min.io
+  group: sts.min.io
   kind: PolicyBinding
-  path: github.com/minio/operator/api/v2
-  version: v2
+  path: github.com/minio/operator/apis/sts.min.io/v1alpha1
+  version: v1alpha1
 version: "3"

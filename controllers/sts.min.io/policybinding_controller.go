@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package controllers
+package stsminio
 
 import (
 	"context"
@@ -24,7 +24,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	miniominiov2 "github.com/minio/operator/api/v2"
+	stsminiov1alpha1 "github.com/minio/operator/apis/sts.min.io/v1alpha1"
 )
 
 // PolicyBindingReconciler reconciles a PolicyBinding object
@@ -33,9 +33,9 @@ type PolicyBindingReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-//+kubebuilder:rbac:groups=minio.min.io.min.io,resources=policybindings,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=minio.min.io.min.io,resources=policybindings/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=minio.min.io.min.io,resources=policybindings/finalizers,verbs=update
+//+kubebuilder:rbac:groups=sts.min.io.min.io,resources=policybindings,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=sts.min.io.min.io,resources=policybindings/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=sts.min.io.min.io,resources=policybindings/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
@@ -57,6 +57,6 @@ func (r *PolicyBindingReconciler) Reconcile(ctx context.Context, req ctrl.Reques
 // SetupWithManager sets up the controller with the Manager.
 func (r *PolicyBindingReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&miniominiov2.PolicyBinding{}).
+		For(&stsminiov1alpha1.PolicyBinding{}).
 		Complete(r)
 }

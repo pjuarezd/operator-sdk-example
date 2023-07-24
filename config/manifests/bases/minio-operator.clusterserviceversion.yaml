@@ -1,0 +1,53 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: '[]'
+    capabilities: Basic Install
+  name: minio-operator.v0.0.0
+  namespace: placeholder
+spec:
+  apiservicedefinitions: {}
+  customresourcedefinitions:
+    owned:
+    - description: PolicyBinding is the Schema for the policybindings API
+      displayName: Policy Binding
+      kind: PolicyBinding
+      name: policybindings.sts.min.io.min.io
+      version: v1alpha1
+    - description: Tenant is the Schema for the tenants API
+      displayName: Tenant
+      kind: Tenant
+      name: tenants.minio.min.io.min.io
+      version: v2
+  description: Simple Kubernetes Oprator fort MinIO clusters
+  displayName: minio-opertor
+  icon:
+  - base64data: ""
+    mediatype: ""
+  install:
+    spec:
+      deployments: null
+    strategy: ""
+  installModes:
+  - supported: false
+    type: OwnNamespace
+  - supported: false
+    type: SingleNamespace
+  - supported: false
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  keywords:
+  - kubernetes
+  - storage
+  - minio
+  - k8s
+  links:
+  - name: Minio Operator
+    url: https://minio-operator.domain
+  maturity: alpha
+  provider:
+    name: minio-operator
+    url: min.io/docs/kubernetes/upstream/index.html
+  version: 0.0.0

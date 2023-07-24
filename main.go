@@ -31,8 +31,10 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	miniominiov2 "github.com/minio/operator/api/v2"
-	"github.com/minio/operator/controllers"
+	miniominiov2 "github.com/minio/operator/apis/minio.min.io/v2"
+	stsminiov1alpha1 "github.com/minio/operator/apis/sts.min.io/v1alpha1"
+	miniominiocontrollers "github.com/minio/operator/controllers/minio.min.io"
+	stsminiocontrollers "github.com/minio/operator/controllers/sts.min.io"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -45,6 +47,7 @@ func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
 
 	utilruntime.Must(miniominiov2.AddToScheme(scheme))
+	utilruntime.Must(stsminiov1alpha1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 
@@ -89,14 +92,14 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err = (&controllers.TenantReconciler{
+	if err = (&miniominiocontrollers.TenantReconciler{
 		Client: mgr.GetClient(),
 		Scheme: mgr.GetScheme(),
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "Tenant")
 		os.Exit(1)
 	}
-	if err = (&controllers.PolicyBindingReconciler{
+	if err = (&stsminiocontrollers.PolicyBindingReconciler{
 		Client: mgr.GetClient(),
 		Scheme: mgr.GetScheme(),
 	}).SetupWithManager(mgr); err != nil {

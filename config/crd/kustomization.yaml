@@ -3,7 +3,7 @@
 # It should be run by config/default
 resources:
 - bases/minio.min.io.min.io_tenants.yaml
-- bases/minio.min.io.min.io_policybindings.yaml
+- bases/sts.min.io.min.io_policybindings.yaml
 #+kubebuilder:scaffold:crdkustomizeresource
 
 patchesStrategicMerge:

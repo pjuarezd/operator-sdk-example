@@ -5,7 +5,7 @@ metadata:
   name: policybinding-viewer-role
 rules:
 - apiGroups:
-  - minio.min.io.min.io
+  - sts.min.io.min.io
   resources:
   - policybindings
   verbs:
@@ -13,7 +13,7 @@ rules:
   - list
   - watch
 - apiGroups:
-  - minio.min.io.min.io
+  - sts.min.io.min.io
   resources:
   - policybindings/status
   verbs:

@@ -1,14 +1,11 @@
-# Operator SDK
+# minio-operator
 
 ```sh
-operator-sdk init --domain=min.io --repo=github.com/minio/operato
+operator-sdk init --domain=min.io --repo=github.com/minio/operator
+kubebuilder edit --multigroup=true
 operator-sdk create api --group=minio.min.io --version=v2 --kind=Tenant
-operator-sdk create api --group=sts.min.io --version=v2 --kind=PolicyBinding
-
+operator-sdk create api --group=sts.min.io --version=v1alpha1 --kind=PolicyBinding
 ```
-
-# minio-operator
-// TODO(user): Add simple overview of use/purpose
 
 ## Description
 // TODO(user): An in-depth paragraph about your project and overview of use

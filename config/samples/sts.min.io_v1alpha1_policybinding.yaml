@@ -1,4 +1,4 @@
-apiVersion: minio.min.io.min.io/v2
+apiVersion: sts.min.io.min.io/v1alpha1
 kind: PolicyBinding
 metadata:
   name: policybinding-sample
